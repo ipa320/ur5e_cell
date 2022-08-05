@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import xacro
 from ament_index_python.packages import get_package_share_directory
@@ -11,7 +12,7 @@ def generate_launch_description():
     robot_urdf = xacro.process_file(robot_urdf)
     robot_description = {'robot_description': robot_urdf.toxml()}
 
-    rviz_config_file = os.path.join(get_package_share_directory('workcell_description'), 'launch', 'config.rviz')
+    rviz_config_file = os.path.join(get_package_share_directory('workcell_description'), 'config', 'config.rviz')
 
     declared_arguments = []
     declared_arguments.append(

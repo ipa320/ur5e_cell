@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <robot name="ur5e_workcell" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <!-- Load ur5e +  Gripper + Camera -->
+    <!-- loading ur5e xacro from ur_description package-->
     <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
+    <!-- loading schunk_egp50 xacro from workcell_description package-->
     <xacro:include filename="$(find workcell_description)/urdf/gripper.urdf.xacro" />
+    <!-- loading realsense xacro from realsense2_description package-->
     <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
     <!-- intel real sense -->
     <xacro:arg name="use_nominal_extrinsics" default="false"/>
@@ -12,7 +14,7 @@
     <xacro:arg name="ur_type" default="ur5"/>
     <xacro:arg name="use_fake_hardware" default="true"/>
     <xacro:arg name="fake_sensor_commands" default="true"/>
-    <!-- Instantiate arm + gripper + camera -->
+    <!-- Instantiate arm -->
     <xacro:ur_robot
         prefix=""
         joint_limits_parameters_file="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml"
@@ -21,9 +23,9 @@
         visual_parameters_file="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"
         use_fake_hardware="$(arg use_fake_hardware)"
         fake_sensor_commands="$(arg fake_sensor_commands)"/>
-    
+    <!-- Instantiate gripper -->
     <xacro:schunk_egp50 />
-    
+    <!-- Instantiate realsense camera -->
     <xacro:sensor_d435 
         parent="base_link" 
         name="camera" 
@@ -34,6 +36,7 @@
     </xacro:sensor_d435>
     
     <link name="world" />
+
     <link name="robotcell">
         <visual>
             <origin rpy="0.0 0 0" xyz="0 0 0" />
