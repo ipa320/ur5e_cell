@@ -8,17 +8,25 @@ from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     robot_urdf = os.path.join(get_package_share_directory('workcell_description'), 'urdf', 'workcell.urdf.xacro')
     robot_urdf = xacro.process_file(robot_urdf)
-    robot_description = {'robot_description': robot_urdf.toxml()}
+    robot_description = robot_urdf.toxml()
     rviz_config = os.path.join(get_package_share_directory('workcell_description'), 'config', 'config.rviz')
+    
     declared_arguments = []
-
     declared_arguments.append(
         DeclareLaunchArgument(
-            "rviz_config_file",
+            "rviz_config",
+            default_value=rviz_config,
             description="rviz configuration file",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "robot_description",
+            default_value=robot_description,
+            description="robot_description file",
         )
     )
 
@@ -47,9 +55,18 @@ def generate_launch_description():
         parameters=[{"use_sim_time": use_sim_time},],
     )
 
+    joint_state_publisher_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen',
+        name='joint_state_publisher',
+        parameters=[{"use_sim_time": use_sim_time},],
+    )
+
     nodes_to_start=[
         robot_state_pub_node,
         rviz_node,
+        joint_state_publisher_node,
         joint_state_publisher_gui_node,
     ]
 

@@ -16,7 +16,8 @@ find_package(realsense2_description)
 install(DIRECTORY 
   launch 
   urdf 
-  meshes 
+  meshes
+  config
   DESTINATION share/${PROJECT_NAME}/)
 
 if(BUILD_TESTING)

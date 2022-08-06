@@ -7,14 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Mass Properties1
-        - /RobotModel1/Links1
-        - /RobotModel1/Links1/base_link1
-        - /RobotModel1/Links1/camera1
-        - /RobotModel1/Links1/egp50_base_link1
-        - /RobotModel1/Links1/robotcell1
-        - /RobotModel1/Links1/world1
-        - /RobotModel1/Links1/wrist_3_link1
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz_common/Selection
@@ -56,9 +48,87 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base:
+          Value: true
+        base_link:
+          Value: true
+        base_link_inertia:
+          Value: true
+        camera_bottom_screw_frame:
+          Value: true
+        camera_link:
+          Value: true
+        egp50_base_link:
+          Value: true
+        egp50_body_link:
+          Value: true
+        egp50_pincer_link:
+          Value: true
+        egp_50_tip:
+          Value: true
+        flange:
+          Value: true
+        forearm_link:
+          Value: true
+        ft_frame:
+          Value: true
+        robotcell_link:
+          Value: true
+        shoulder_link:
+          Value: true
+        tool0:
+          Value: true
+        upper_arm_link:
+          Value: true
+        world:
+          Value: true
+        wrist_1_link:
+          Value: true
+        wrist_2_link:
+          Value: true
+        wrist_3_link:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        world:
+          robotcell_link:
+            base_link:
+              base:
+                {}
+              base_link_inertia:
+                shoulder_link:
+                  upper_arm_link:
+                    forearm_link:
+                      wrist_1_link:
+                        wrist_2_link:
+                          wrist_3_link:
+                            egp50_base_link:
+                              egp50_body_link:
+                                egp50_pincer_link:
+                                  egp_50_tip:
+                                    {}
+                            flange:
+                              tool0:
+                                {}
+                            ft_frame:
+                              {}
+            camera_bottom_screw_frame:
+              camera_link:
+                {}
+      Update Interval: 0
+      Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -69,36 +139,103 @@ Visualization Manager:
         Value: /robot_description
       Enabled: true
       Links:
-        All Links Enabled:
-          {}
+        All Links Enabled: true
         Expand Joint Details: false
-        Expand Link Details: true
+        Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
-        camera:
+          Show Axes: false
+          Show Trail: false
+        base_link_inertia:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         egp50_base_link:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
-        robotcell:
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        egp50_body_link:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        egp50_pincer_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        egp_50_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        flange:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ft_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robotcell_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        upper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         world:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
+          Show Axes: false
+          Show Trail: false
+        wrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wrist_3_link:
           Alpha: 1
-          Show Axes: true
-          Show Trail: true
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -153,25 +290,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.864776372909546
+      Distance: 3.4905104637145996
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.03564223274588585
-        Y: -0.2494024932384491
-        Z: -0.24080167710781097
+        X: -0.11900961399078369
+        Y: -0.22344055771827698
+        Z: -0.2467082291841507
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9797968864440918
+      Pitch: 0.3447968065738678
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.49770814180374146
+      Yaw: 5.063575744628906
     Saved: ~
 Window Geometry:
   Displays:

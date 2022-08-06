@@ -13,23 +13,12 @@ Build & source your workspace
 colcon build --symlink-install
 source install/setup.bash
 ````
-
-
-
-To visualize the robot cell in rviz
-```
-ros2 run robot_state_publisher robot_state_publisher ~/ws/ / /urdf/workcell.urdf.xacro
+Launch the workcell
 ````
+ros2 launch workcell_description workcell_bringup.launch.py
 
 ````
-rviz2
-````
-Alternatively
-````
-ros2 launch workcell_description workcell_bringup.py
-
-````
-**Tip:**  To check xacro syntax
+**Tip:**  To check xacro syntax during development
 ````
 check_urdf <(xacro workcell.urdf.xacro)
 ````

@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-    <link name="world" />
+    <link name="world">
+    </link>
 
     <xacro:property name="robotcell_length" value="1" />
     <xacro:property name="robotcell_width" value="0.5" />
@@ -10,20 +11,20 @@
     <joint name="world_to_robotcell_joint" type="fixed">
         <parent link="world" />
         <child link="robotcell_link" />
-        <origin xyz="-${robotcell_length/2} -${robotcell_width/2} 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
     <link name="robotcell_link">
         <visual>
-            <origin rpy="0.0 0 0" xyz="0 0 0" />
+            <origin rpy="0 ${-pi} ${-pi/2}" xyz="-0.5 -0.5 2" />
             <geometry>
-                <mesh filename="package://workcell_description/meshes/Robotcell.stl" />
+                <mesh filename="package://workcell_description/meshes/Robotcell.stl" scale="0.001 0.001 0.001"/>
             </geometry>
         </visual>
         <collision>
-            <origin rpy="0.0 0 0" xyz="0 0 0" />
+            <origin rpy="0 0 0 " xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://workcell_description/meshes/Robotcell.stl" />
+                <mesh filename="package://workcell_description/meshes/Robotcell.stl" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
