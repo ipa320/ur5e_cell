@@ -18,6 +18,9 @@ Launch the workcell
 ros2 launch workcell_description workcell_bringup.launch.py
 
 ````
+
+![](https://articulatedrobotics.xyz/media/assets/posts/ready-for-ros/urdf-rsp.png  )
+
 **Tip:**  To check xacro syntax during development
 ````
 check_urdf <(xacro workcell.urdf.xacro)
