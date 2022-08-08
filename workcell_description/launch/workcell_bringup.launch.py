@@ -55,18 +55,9 @@ def generate_launch_description():
         parameters=[{"use_sim_time": use_sim_time},],
     )
 
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        output='screen',
-        name='joint_state_publisher',
-        parameters=[{"use_sim_time": use_sim_time},],
-    )
-
     nodes_to_start=[
         robot_state_pub_node,
         rviz_node,
-        joint_state_publisher_node,
         joint_state_publisher_gui_node,
     ]
 

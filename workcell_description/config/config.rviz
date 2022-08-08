@@ -49,83 +49,19 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz_default_plugins/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base:
-          Value: true
-        base_link:
-          Value: true
-        base_link_inertia:
-          Value: true
-        camera_bottom_screw_frame:
-          Value: true
-        camera_link:
-          Value: true
-        egp50_base_link:
-          Value: true
-        egp50_body_link:
-          Value: true
-        egp50_pincer_link:
-          Value: true
-        egp_50_tip:
-          Value: true
-        flange:
-          Value: true
-        forearm_link:
-          Value: true
-        ft_frame:
-          Value: true
-        robotcell_link:
-          Value: true
-        shoulder_link:
-          Value: true
-        tool0:
-          Value: true
-        upper_arm_link:
-          Value: true
-        world:
-          Value: true
-        wrist_1_link:
-          Value: true
-        wrist_2_link:
-          Value: true
-        wrist_3_link:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          robotcell_link:
-            base_link:
-              base:
-                {}
-              base_link_inertia:
-                shoulder_link:
-                  upper_arm_link:
-                    forearm_link:
-                      wrist_1_link:
-                        wrist_2_link:
-                          wrist_3_link:
-                            egp50_base_link:
-                              egp50_body_link:
-                                egp50_pincer_link:
-                                  egp_50_tip:
-                                    {}
-                            flange:
-                              tool0:
-                                {}
-                            ft_frame:
-                              {}
-            camera_bottom_screw_frame:
-              camera_link:
-                {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
