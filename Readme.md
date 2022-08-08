@@ -22,3 +22,14 @@ ros2 launch workcell_description workcell_bringup.launch.py
 ````
 check_urdf <(xacro workcell.urdf.xacro)
 ````
+
+### Tasks 
+- [x] Make urdf of the workcell
+- [x] Modify the shunk egp50 urdf file
+- [ ] Add Gazebo plugins to the xacro
+- [x] Create launch files to bringup sim
+- [ ] Create launch files to bringup sim
+
+### Issues
+- [] Need to fix the measurement values in the urdf files from the real world measurements
+- [] Shunk EGP50 urdf is not perfect and needs to be exported directly from solidworks as urdf.
