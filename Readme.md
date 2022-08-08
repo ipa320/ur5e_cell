@@ -36,3 +36,8 @@ check_urdf <(xacro workcell.urdf.xacro)
 ### Issues
 - [ ] Need to fix the measurement values in the urdf files from the real world measurements
 - [ ] Shunk EGP50 urdf is not perfect and needs to be exported directly from solidworks as urdf.
+
+## Reference
+- [ROS wiki urdf](http://wiki.ros.org/urdf)
+- [ArticulatedRobotics URDF](https://articulatedrobotics.xyz/ready-for-ros-7-urdf/)
+- [ArticulatedRobotics Gazebo](https://articulatedrobotics.xyz/ready-for-ros-8-gazebo/)
