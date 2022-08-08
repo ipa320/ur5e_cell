@@ -31,5 +31,5 @@ check_urdf <(xacro workcell.urdf.xacro)
 - [ ] Create launch files to bringup sim
 
 ### Issues
-- [] Need to fix the measurement values in the urdf files from the real world measurements
-- [] Shunk EGP50 urdf is not perfect and needs to be exported directly from solidworks as urdf.
+- [ ] Need to fix the measurement values in the urdf files from the real world measurements
+- [ ] Shunk EGP50 urdf is not perfect and needs to be exported directly from solidworks as urdf.
