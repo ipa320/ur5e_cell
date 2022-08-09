@@ -1,0 +1,6 @@
+[submodule "Universal_Robots_ROS2_Description"]
+	path = Universal_Robots_ROS2_Description
+	url = git@github.com:ipa-rar/ur_description.git
+[submodule "ur_description"]
+	path = ur_description
+	url = git@github.com:ipa-rar/ur_description.git
