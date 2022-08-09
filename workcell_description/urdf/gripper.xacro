@@ -1,12 +1,20 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <!-- Choose which gripper to use -->
+    <xacro:property name="gripper_name" value="grippy" /> <!-- shunk_egp50 or grippy -->
 
     <joint name="robot_to_gripper_joint" type="fixed">
         <parent link="wrist_3_link" />
-        <child link="egp50_base_link" />
+        <child link="${gripper_name}_base_link" /> 
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
     </joint>
 
-    <xacro:include filename="$(find workcell_description)/urdf/shunk_egp50.xacro" />
-    <xacro:schunk_egp50 />
+    <!-- Uncomment 2 lines below and comment grippy to use shunk_egp50 Gripper  -->
+<!--     <xacro:include filename="$(find workcell_description)/urdf/shunk_egp50.xacro" />
+    <xacro:schunk_egp50 /> -->
+
+    <!-- Uncomment 2 lines below and comment shunk_egp50 to use grippy Gripper -->
+    <xacro:include filename="$(find workcell_description)/urdf/grippy.xacro" />
+    <xacro:grippy />
+
 </robot>

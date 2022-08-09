@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1
+        - /TF1/Frames1
         - /RobotModel1
       Splitter Ratio: 0.5
     Tree Height: 719
@@ -49,19 +51,88 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz_default_plugins/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
-      Marker Scale: 1
+        base:
+          Value: true
+        base_link:
+          Value: true
+        base_link_inertia:
+          Value: true
+        camera_bottom_screw_frame:
+          Value: true
+        camera_link:
+          Value: true
+        flange:
+          Value: true
+        forearm_link:
+          Value: true
+        ft_frame:
+          Value: true
+        robotcell_link:
+          Value: true
+        shoulder_link:
+          Value: true
+        shunk_egp50_base_link:
+          Value: true
+        shunk_egp50_body_link:
+          Value: true
+        shunk_egp50_pincer_1_link:
+          Value: true
+        shunk_egp50_pincer_2_link:
+          Value: true
+        tool0:
+          Value: true
+        tool_tip:
+          Value: true
+        upper_arm_link:
+          Value: true
+        world:
+          Value: true
+        wrist_1_link:
+          Value: true
+        wrist_2_link:
+          Value: true
+        wrist_3_link:
+          Value: true
+      Marker Scale: 0.20000000298023224
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        world:
+          robotcell_link:
+            base_link:
+              base:
+                {}
+              base_link_inertia:
+                shoulder_link:
+                  upper_arm_link:
+                    forearm_link:
+                      wrist_1_link:
+                        wrist_2_link:
+                          wrist_3_link:
+                            flange:
+                              tool0:
+                                {}
+                            ft_frame:
+                              {}
+                            shunk_egp50_base_link:
+                              shunk_egp50_body_link:
+                                shunk_egp50_pincer_1_link:
+                                  {}
+                                shunk_egp50_pincer_2_link:
+                                  {}
+                              tool_tip:
+                                {}
+            camera_bottom_screw_frame:
+              camera_link:
+                {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
@@ -102,25 +173,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        egp50_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        egp50_body_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        egp50_pincer_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        egp_50_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         flange:
           Alpha: 1
           Show Axes: false
@@ -144,7 +196,31 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        shunk_egp50_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shunk_egp50_body_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shunk_egp50_pincer_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shunk_egp50_pincer_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tool_tip:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -226,25 +302,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.4905104637145996
+      Distance: 1.7722446918487549
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.11900961399078369
-        Y: -0.22344055771827698
-        Z: -0.2467082291841507
+        X: 1.310597538948059
+        Y: -0.5908602476119995
+        Z: -0.8352696299552917
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3447968065738678
+      Pitch: 0.7747968435287476
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.063575744628906
+      Yaw: 2.165402412414551
     Saved: ~
 Window Geometry:
   Displays:
