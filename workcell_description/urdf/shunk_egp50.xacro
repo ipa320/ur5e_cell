@@ -3,8 +3,9 @@
 
     <xacro:macro name="schunk_egp50">
 
+        <xacro:include filename="inertial_macros.xacro" />
 
-        <xacro:property name="base_diamter" value="0.075" />
+        <xacro:property name="base_diameter" value="0.075" />
         <xacro:property name="base_length" value="0.015" />
         <xacro:property name="body_length" value="0.05" />
         <xacro:property name="body_width" value="0.03" />
@@ -31,59 +32,60 @@
         <link name="shunk_egp50_base_link">
             <visual>
                 <geometry>
-                    <cylinder length="${base_length}" radius="${base_diamter/2}" />
+                    <cylinder length="${base_length}" radius="${base_diameter/2}" />
                 </geometry>
                 <material name="blue" />
                 <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
             </visual>
             <collision>
                 <geometry>
-                    <cylinder length="${base_length}" radius="${base_diamter/2}" />
+                    <cylinder length="${base_length}" radius="${base_diameter/2}" />
                 </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0" />
+                <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
             </collision>
+            <xacro:inertial_cylinder mass="0.2" length="${base_length}" radius="${base_diameter/2}">
+                <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
+            </xacro:inertial_cylinder>
         </link>
 
         <!--Main gripper-->
         <link name="shunk_egp50_body_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Gripper.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Gripper.stl" scale="0.001 0.001 0.001" />
                 </geometry>
                 <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${body_width/2} ${-body_height/2}" />
                 <material name="green" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Gripper.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Gripper.stl" scale="0.001 0.001 0.001" />
                 </geometry>
-                <origin rpy="0 0 0" xyz="0 0 0" />
+                <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${body_width/2} ${-body_height/2}" />
             </collision>
-            <inertial>
-                <mass value="0.51" />
-                <inertia ixx="0.0007" iyy="0.0001" izz="0.0006" ixy="0.0" ixz="0.0" iyz="0.0" />
-            </inertial>
+            <xacro:inertial_box mass="0.5" x="${body_length}" y="${body_width}" z="${body_height}">
+                <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${body_width/2} ${-body_height/2}" />
+            </xacro:inertial_box>
         </link>
 
         <!--Pincer block 1-->
         <link name="shunk_egp50_pincer_1_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Pincer_1.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Pincer_1.stl" scale="0.001 0.001 0.001" />
                 </geometry>
                 <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
                 <material name="white" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Pincer_1.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Pincer_1.stl" scale="0.001 0.001 0.001" />
                 </geometry>
                 <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
             </collision>
-            <inertial>
-                <mass value="0.51" />
-                <inertia ixx="0.0007" iyy="0.0001" izz="0.0006" ixy="0.0" ixz="0.0" iyz="0.0" />
-            </inertial>
+            <xacro:inertial_box mass="0.1" x="${pincer_length}" y="${pincer_width}" z="${pincer_height}">
+                <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
+            </xacro:inertial_box>
         </link>
 
 
@@ -91,21 +93,20 @@
         <link name="shunk_egp50_pincer_2_link">
             <visual>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Pincer_2.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Pincer_2.stl" scale="0.001 0.001 0.001" />
                 </geometry>
                 <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
                 <material name="blue" />
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="package://workcell_description/meshes/Pincer_2.stl" scale="0.001 0.001 0.001"/>
+                    <mesh filename="package://workcell_description/meshes/Pincer_2.stl" scale="0.001 0.001 0.001" />
                 </geometry>
                 <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
             </collision>
-            <inertial>
-                <mass value="0.51" />
-                <inertia ixx="0.0007" iyy="0.0001" izz="0.0006" ixy="0.0" ixz="0.0" iyz="0.0" />
-            </inertial>
+            <xacro:inertial_box mass="0.1" x="${pincer_length}" y="${pincer_width}" z="${pincer_height}">
+                <origin rpy="${pi/2} 0 0" xyz="${-body_length/2} ${pincer_width/2} ${-body_height-pincer_height/2}" />
+            </xacro:inertial_box>
         </link>
 
 
@@ -126,9 +127,9 @@
             <child link="shunk_egp50_pincer_1_link" />
             <origin xyz="0.0 0.0 ${body_height/2+pincer_height/2}" rpy="0.0 0.0 0.0" />
             <!-- the motion of the pincer is along the X axis -->
-            <axis xyz="1 0 0"/>
+            <axis xyz="1 0 0" />
             <!-- the motion of the pincer is limited to the half of the gripper body length -->
-            <limit lower="${-body_length/16}" upper="${body_length/16}" velocity="100" effort="100"/>  
+            <limit lower="${-body_length/16}" upper="${body_length/16}" velocity="100" effort="100" />
         </joint>
 
         <joint name="shunk_egp50_pincer_2_joint" type="prismatic">
@@ -136,9 +137,9 @@
             <child link="shunk_egp50_pincer_2_link" />
             <origin xyz="0.0 0.002 ${body_height/2+pincer_height/2}" rpy="0.0 0.0 0.0" />
             <!-- the motion of the pincer is along the X axis -->
-            <axis xyz="1 0 0"/>
+            <axis xyz="1 0 0" />
             <!-- the motion of the pincer is limited to the half of the gripper body length -->
-            <limit lower="${body_length/16}" upper="${-body_length/16}" velocity="100" effort="100"/> 
+            <limit lower="${body_length/16}" upper="${-body_length/16}" velocity="100" effort="100" />
         </joint>
 
         <joint name="shunk_egp50_tip_joint" type="fixed">

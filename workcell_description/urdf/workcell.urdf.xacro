@@ -9,5 +9,6 @@
     <xacro:include filename="$(find workcell_description)/urdf/gripper.xacro" />
     <!-- loading camera from workcell_description package-->
     <xacro:include filename="$(find workcell_description)/urdf/camera.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/gazebo_control.xacro" />
 
 </robot>
