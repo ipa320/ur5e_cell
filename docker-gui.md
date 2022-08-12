@@ -3,7 +3,7 @@
 ### You can develop your code in local filesystem and compile code in docker. 
 
 ``` 
-docker run --rm -it -v ~/ipa/ros_i/ros2_ws:/root/ros2_ws --name ros_i ros:humble-ros-base /bin/bash 
+docker run --rm -it -v ~/ros1_ws:/root/ros1_ws --name ros_docker ros:noetic-ros-base /bin/bash 
 ``` 
 
 - `~/ipa/ros_i/ros2_ws` is your local folder 
@@ -36,13 +36,13 @@ sudo chmod +x gui-docker
 
 ``` 
 
-./gui-docker -it -v ~/ipa/ros_i/ros2_ws:/root/ros2_ws --name ros_i ros:humble-ros-base /bin/bash 
+./gui-docker -it -v ~/ros1_ws/src:/root/ros1_ws --name ros_docker ros:noetic-ros-base /bin/bash 
 
 ``` 
 - Exiting the container and restart it 
 
 ``` 
-./gui-docker -c ros_i 
+./gui-docker -c ros_docker 
 ``` 
 
 **Debug**  
