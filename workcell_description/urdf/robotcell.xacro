@@ -4,36 +4,13 @@
     <link name="world">
     </link>
 
-<!--     <link name="shield_front">
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://workcell_description/meshes/Robotcell.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0 " xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://workcell_description/meshes/Robotcell.stl" scale="0.001 0.001 0.001" />
-            </geometry>
-        </collision>
-    </link>
+    <xacro:property name="robot_base_length" value="0.30" />
+    <xacro:property name="robot_base_width" value="0.52" />
+    <xacro:property name="robot_base_height" value="0.99" />
+    <xacro:property name="robotcell_length" value="1.44" />
+    <xacro:property name="robotcell_width" value="0.94" />
+    <xacro:property name="robotcell_height" value="1.13" />
 
-    <link name="shield_rear">
-    </link>
-
-    <link name="shield_left">
-    </link>
-
-    <link name="shield_right">
-    </link> -->
-
-    <xacro:property name="robot_base_length" value="0.5" />
-    <xacro:property name="robot_base_width" value="0.5" />
-    <xacro:property name="robot_base_height" value="2" />
-    <xacro:property name="robotcell_length" value="1" />
-    <xacro:property name="robotcell_width" value="1" />
-    <xacro:property name="robotcell_height" value="4" />
 
     <joint name="world_to_robotcell_joint" type="fixed">
         <parent link="world" />

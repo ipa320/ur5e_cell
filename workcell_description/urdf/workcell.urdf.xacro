@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5e_workcell">
 
     <!-- loading robotcell from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/robotcell.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/robot_cage.xacro" />
     <!-- loading robot  from workcell_description package-->
     <xacro:include filename="$(find workcell_description)/urdf/robot.xacro" />
     <!-- loading gripper from workcell_description package-->
