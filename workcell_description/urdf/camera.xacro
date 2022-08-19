@@ -24,6 +24,3 @@
     </xacro:sensor_d435>
 
 </robot>
-
-<!-- ${robotcell_length/2} ${robotcell_width/2}
-${pi/2} ${pi/2} -->
