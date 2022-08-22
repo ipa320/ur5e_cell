@@ -17,7 +17,6 @@
         </plugin>
     </gazebo>
 
-
     <!-- This plugin will read a JointTrajectory message from the /set_joint_trajectory topic 
             and move the machine accordingly. -->
     <gazebo>

@@ -24,7 +24,7 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <box size="${robotcell_length} ${shield_thickness} ${shield_thickness}" />
+                <box size="${robotcell_length} ${shield_thickness} ${robotcell_height}" />
             </geometry>
             <material name="gray"/>
         </collision>

@@ -25,6 +25,18 @@ ros2 launch workcell_description workcell_bringup.launch.py
 ````
 check_urdf <(xacro workcell.urdf.xacro)
 ````
+# Simulation in Gazebo
+Convert the xacro files to urdf
+
+```
+ros2 run xacro xacro workcell.urdf.xacro > workcell.urdf
+```
+Convert the urdf files to world file for Gazebo
+```
+gz sdf -p workcell.urdf > workcell.world
+```
+
+
 # Real Robot bringup
 
 ```
