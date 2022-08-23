@@ -1,14 +1,104 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5e_workcell">
-
-    <!-- loading robotcell from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/robot_cage.xacro" />
     <!-- loading robot  from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/robot.xacro" />
-    <!-- loading gripper from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/gripper.xacro" />
-    <!-- loading camera from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/camera.xacro" />
-    <xacro:include filename="$(find workcell_description)/urdf/gazebo_control.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/shunk_egp50.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/robot_cell_clone.xacro" />
+    <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
+
+    <xacro:arg name="name" default="ur5e" />
+    <xacro:arg name="ur_type" default="ur5e" />
+    <xacro:arg name="prefix" default="" />
+    <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml" />
+    <xacro:arg name="kinematics_params" default="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml" />
+    <xacro:arg name="physical_params" default="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml" />
+    <xacro:arg name="visual_params" default="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml" />
+    <xacro:arg name="transmission_hw_interface" default="" />
+    <xacro:arg name="safety_limits" default="false" />
+    <xacro:arg name="safety_pos_margin" default="0.15" />
+    <xacro:arg name="safety_k_position" default="20" />
+    <xacro:arg name="headless_mode" default="false" />
+    <xacro:arg name="robot_ip" default="0.0.0.0" />
+    <xacro:arg name="script_filename" default="" />
+    <xacro:arg name="output_recipe_filename" default="" />
+    <xacro:arg name="input_recipe_filename" default="" />
+    <xacro:arg name="use_tool_communication" default="false" />
+    <xacro:arg name="tool_voltage" default="24" />
+    <xacro:arg name="tool_parity" default="0" />
+    <xacro:arg name="tool_baud_rate" default="115200" />
+    <xacro:arg name="tool_stop_bits" default="1" />
+    <xacro:arg name="tool_rx_idle_chars" default="1.5" />
+    <xacro:arg name="tool_tx_idle_chars" default="3.5" />
+    <xacro:arg name="tool_device_name" default="/tmp/ttyUR" />
+    <xacro:arg name="tool_tcp_port" default="54321" />
+    <xacro:arg name="use_fake_hardware" default="false" />
+    <xacro:arg name="fake_sensor_commands" default="false" />
+    <xacro:arg name="sim_gazebo" default="false" />
+    <xacro:arg name="sim_ignition" default="false" />
+    <xacro:arg name="simulation_controllers" default="" />
+    <xacro:arg name="initial_positions_file" default="$(find ur_description)/config/initial_positions.yaml" />
+
+
+    <xacro:property name="gripper_name" value="shunk_egp50" />
+    <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)" />
+
+    <xacro:schunk_egp50 />
+    <xacro:ur_robot
+        name="$(arg name)"
+        prefix="$(arg prefix)"
+        parent="robotcell_base_link"
+        joint_limits_parameters_file="$(arg joint_limit_params)"
+        kinematics_parameters_file="$(arg kinematics_params)"
+        physical_parameters_file="$(arg physical_params)"
+        visual_parameters_file="$(arg visual_params)"
+        transmission_hw_interface="$(arg transmission_hw_interface)"
+        safety_limits="$(arg safety_limits)"
+        safety_pos_margin="$(arg safety_pos_margin)"
+        safety_k_position="$(arg safety_k_position)"
+        use_fake_hardware="$(arg use_fake_hardware)"
+        fake_sensor_commands="$(arg fake_sensor_commands)"
+        sim_gazebo="$(arg sim_gazebo)"
+        sim_ignition="$(arg sim_ignition)"
+        headless_mode="$(arg headless_mode)"
+        initial_positions="${load_yaml(initial_positions_file)}"
+        use_tool_communication="$(arg use_tool_communication)"
+        tool_voltage="$(arg tool_voltage)"
+        tool_parity="$(arg tool_parity)"
+        tool_baud_rate="$(arg tool_baud_rate)"
+        tool_stop_bits="$(arg tool_stop_bits)"
+        tool_rx_idle_chars="$(arg tool_rx_idle_chars)"
+        tool_tx_idle_chars="$(arg tool_tx_idle_chars)"
+        tool_device_name="$(arg tool_device_name)"
+        tool_tcp_port="$(arg tool_tcp_port)"
+        robot_ip="$(arg robot_ip)"
+        script_filename="$(arg script_filename)"
+        output_recipe_filename="$(arg output_recipe_filename)"
+        input_recipe_filename="$(arg input_recipe_filename)"
+    >
+        <origin xyz="${robot_center_offset_length} ${robot_center_offset_width} ${robot_base_height}" rpy="0 0 ${pi/2}" /> <!-- position robot in the world -->
+    </xacro:ur_robot>
+
+    <xacro:if value="$(arg sim_gazebo)">
+        <!-- Gazebo plugins -->
+        <gazebo reference="world"></gazebo>
+        <gazebo>
+            <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+                <parameters>$(arg simulation_controllers)</parameters>
+            </plugin>
+        </gazebo>
+    </xacro:if>
+
+    <link name="world" />
+
+    <joint name="world_to_robot_cell_joint" type="fixed">
+        <parent link="world" />
+        <child link="robotcell_base_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    <joint name="robot_to_gripper_joint" type="fixed">
+        <parent link="tool0" />
+        <child link="${gripper_name}_base_link" />
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
 
 </robot>
