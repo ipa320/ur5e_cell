@@ -14,8 +14,6 @@
         <color rgba="0.6 0.8 0.8 1" />
     </material>
 
-    <link name="world"></link>
-
     <link name="robotcell_link">
         <origin xyz="0 0 0" rpy="0 0 0" />
     </link>
@@ -113,11 +111,6 @@
         </xacro:inertial_box>
     </link>
 
-    <joint name="world_to_robotcell_joint" type="fixed">
-        <parent link="world" />
-        <child link="robotcell_link" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-    </joint>
 
     <joint name="robotcell_joint_to_front" type="fixed">
         <parent link="robotcell_link" />

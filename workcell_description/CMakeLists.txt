@@ -19,6 +19,8 @@ install(DIRECTORY
   meshes
   config
   world
+  srdf
+  rviz
   DESTINATION share/${PROJECT_NAME}/)
 
 if(BUILD_TESTING)

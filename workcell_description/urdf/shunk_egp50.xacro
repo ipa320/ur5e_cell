@@ -122,7 +122,7 @@
             <origin xyz="0.0 0.0 ${base_length+body_height/2}" rpy="0.0 0.0 0.0" />
         </joint>
 
-        <joint name="shunk_egp50_pincer_1_joint" type="prismatic">
+        <joint name="shunk_egp50_pincer_1_joint" type="fixed">
             <parent link="shunk_egp50_body_link" />
             <child link="shunk_egp50_pincer_1_link" />
             <origin xyz="0.0 0.0 ${body_height/2+pincer_height/2}" rpy="0.0 0.0 0.0" />
@@ -132,7 +132,7 @@
             <limit lower="${-body_length/16}" upper="${body_length/16}" velocity="100" effort="100" />
         </joint>
 
-        <joint name="shunk_egp50_pincer_2_joint" type="prismatic">
+        <joint name="shunk_egp50_pincer_2_joint" type="fixed">
             <parent link="shunk_egp50_body_link" />
             <child link="shunk_egp50_pincer_2_link" />
             <origin xyz="0.0 0.002 ${body_height/2+pincer_height/2}" rpy="0.0 0.0 0.0" />

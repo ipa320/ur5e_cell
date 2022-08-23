@@ -1,15 +1,31 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5e_workcell">
-
-    <!-- loading robotcell from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/robot_cell_clone.xacro" />
     <!-- loading robot  from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/robot.xacro" />
-    <!-- loading gripper from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/gripper.xacro" />
-    <!-- loading camera from workcell_description package-->
-    <xacro:include filename="$(find workcell_description)/urdf/camera.xacro" />
-    <!-- loading gazebo plugins-->
-    <xacro:include filename="$(find workcell_description)/urdf/gazebo_control.xacro" />
 
+    <xacro:include filename="$(find workcell_description)/urdf/robot.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/shunk_egp50.xacro" />
+    <xacro:include filename="$(find workcell_description)/urdf/robot_cell_clone.xacro"/>
+    
+    <xacro:property name="gripper_name" value="shunk_egp50" /> 
+    
+    <xacro:schunk_egp50 />
+
+    <joint name="robot_to_gripper_joint" type="fixed">
+        <parent link="tool0" />
+        <child link="${gripper_name}_base_link" /> 
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <joint name="base_link_to_robotcell_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="robotcell_link" />
+        <origin xyz="0 0 ${-robot_base_height}" rpy="0 0 0" />
+    </joint>
+
+<!--     <joint name="robotcell_to_base_link_joint" type="fixed">
+        <parent link="robotcell_link" />
+        <child link="base_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>  
+ -->
 </robot>

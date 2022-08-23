@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="ur5e_workcell">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator">
+        <joint name="FixedBase"/>
+        <joint name="robotcell_to_robot_joint"/>
+        <joint name="base_link-base_fixed_joint"/>
+        <joint name="base_link-base_link_inertia"/>
+        <joint name="shoulder_pan_joint"/>
+        <joint name="shoulder_lift_joint"/>
+        <joint name="elbow_joint"/>
+        <joint name="wrist_1_joint"/>
+        <joint name="wrist_2_joint"/>
+        <joint name="wrist_3_joint"/>
+        <joint name="wrist_3-flange"/>
+        <joint name="flange-tool0"/>
+        <joint name="robot_to_gripper_joint"/>
+        <joint name="shunk_egp50_body_joint"/>
+        <joint name="shunk_egp50_pincer_1_joint"/>
+        <joint name="shunk_egp50_pincer_2_joint"/>
+        <joint name="shunk_egp50_tip_joint"/>
+    </group>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="shunk_egp50" parent_link="world" group="manipulator" parent_group="manipulator"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="FixedBase" type="fixed" parent_frame="world" child_link="world"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link_inertia" link2="base_link_inertia" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="camera_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="robotcell_base" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="shield_front" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="shield_left" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="shield_rear" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="base_link_inertia" link2="shoulder_link" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="forearm_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="robotcell_base" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="shield_front" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="shield_left" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="shield_rear" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="shunk_egp50_base_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="shunk_egp50_body_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="shunk_egp50_pincer_1_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="shunk_egp50_pincer_2_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="upper_arm_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_1_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_2_link" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_3_link" reason="Never"/>
+    <disable_collisions link1="forearm_link" link2="forearm_link" reason="Default"/>
+    <disable_collisions link1="forearm_link" link2="shield_left" reason="Never"/>
+    <disable_collisions link1="forearm_link" link2="upper_arm_link" reason="Adjacent"/>
+    <disable_collisions link1="forearm_link" link2="wrist_1_link" reason="Adjacent"/>
+    <disable_collisions link1="robotcell_base" link2="shield_front" reason="Adjacent"/>
+    <disable_collisions link1="robotcell_base" link2="shield_left" reason="Adjacent"/>
+    <disable_collisions link1="robotcell_base" link2="shield_rear" reason="Adjacent"/>
+    <disable_collisions link1="robotcell_base" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="robotcell_base" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="shield_front" link2="shield_left" reason="Adjacent"/>
+    <disable_collisions link1="shield_front" link2="shield_rear" reason="Adjacent"/>
+    <disable_collisions link1="shield_front" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="shield_front" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="shield_rear" reason="Adjacent"/>
+    <disable_collisions link1="shield_left" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="shield_left" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="shunk_egp50_base_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="shunk_egp50_body_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="shunk_egp50_pincer_1_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="shunk_egp50_pincer_2_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="upper_arm_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="wrist_1_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="wrist_2_link" reason="Never"/>
+    <disable_collisions link1="shield_left" link2="wrist_3_link" reason="Never"/>
+    <disable_collisions link1="shield_rear" link2="shield_right" reason="Adjacent"/>
+    <disable_collisions link1="shield_rear" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="shield_right" link2="shoulder_link" reason="Never"/>
+    <disable_collisions link1="shoulder_link" link2="shoulder_link" reason="Default"/>
+    <disable_collisions link1="shoulder_link" link2="upper_arm_link" reason="Adjacent"/>
+    <disable_collisions link1="shunk_egp50_base_link" link2="shunk_egp50_base_link" reason="Default"/>
+    <disable_collisions link1="shunk_egp50_base_link" link2="shunk_egp50_body_link" reason="Adjacent"/>
+    <disable_collisions link1="shunk_egp50_base_link" link2="wrist_3_link" reason="Adjacent"/>
+    <disable_collisions link1="shunk_egp50_body_link" link2="shunk_egp50_body_link" reason="Default"/>
+    <disable_collisions link1="shunk_egp50_body_link" link2="shunk_egp50_pincer_1_link" reason="Adjacent"/>
+    <disable_collisions link1="shunk_egp50_body_link" link2="shunk_egp50_pincer_2_link" reason="Adjacent"/>
+    <disable_collisions link1="shunk_egp50_pincer_1_link" link2="shunk_egp50_pincer_1_link" reason="Default"/>
+    <disable_collisions link1="shunk_egp50_pincer_1_link" link2="shunk_egp50_pincer_2_link" reason="Never"/>
+    <disable_collisions link1="shunk_egp50_pincer_2_link" link2="shunk_egp50_pincer_2_link" reason="Default"/>
+    <disable_collisions link1="upper_arm_link" link2="upper_arm_link" reason="Default"/>
+    <disable_collisions link1="wrist_1_link" link2="wrist_1_link" reason="Default"/>
+    <disable_collisions link1="wrist_1_link" link2="wrist_2_link" reason="Adjacent"/>
+    <disable_collisions link1="wrist_2_link" link2="wrist_2_link" reason="Default"/>
+    <disable_collisions link1="wrist_2_link" link2="wrist_3_link" reason="Adjacent"/>
+    <disable_collisions link1="wrist_3_link" link2="wrist_3_link" reason="Default"/>
+</robot>

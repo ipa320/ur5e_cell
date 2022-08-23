@@ -147,6 +147,55 @@
     <origin rpy="0 0 -3.141592653589793" xyz="0.45 -0.02 0.99"/>
   </joint>
   <!--
+    Base UR robot series xacro macro.
+
+    NOTE this is NOT a URDF. It cannot directly be loaded by consumers
+    expecting a flattened '.urdf' file. See the top-level '.xacro' for that
+    (but note that .xacro must still be processed by the xacro command).
+
+    This file models the base kinematic chain of a UR robot, which then gets
+    parameterised by various configuration files to convert it into a UR3(e),
+    UR5(e), UR10(e) or UR16e.
+
+    NOTE the default kinematic parameters (i.e., link lengths, frame locations,
+    offsets, etc) do not correspond to any particular robot. They are defaults
+    only. There WILL be non-zero offsets between the Forward Kinematics results
+    in TF (i.e., robot_state_publisher) and the values reported by the Teach
+    Pendant.
+
+    For accurate (and robot-specific) transforms, the 'kinematics_parameters_file'
+    parameter MUST point to a .yaml file containing the appropriate values for
+    the targeted robot.
+
+    If using the UniversalRobots/Universal_Robots_ROS_Driver, follow the steps
+    described in the readme of that repository to extract the kinematic
+    calibration from the controller and generate the required .yaml file.
+
+    Main author of the migration to yaml configs Ludovic Delval.
+
+    Contributors to previous versions (in no particular order)
+
+     - Denis Stogl
+     - Lovro Ivanov
+     - Felix Messmer
+     - Kelsey Hawkins
+     - Wim Meeussen
+     - Shaun Edwards
+     - Nadia Hammoudeh Garcia
+     - Dave Hershberger
+     - G. vd. Hoorn
+     - Philip Long
+     - Dave Coleman
+     - Miguel Prada
+     - Mathias Luedtke
+     - Marcel Schnirring
+     - Felix von Drigalski
+     - Felix Exner
+     - Jimmy Da Silva
+     - Ajit Krisshna N L
+     - Muhammad Asif Rana
+  -->
+  <!--
     NOTE the macro defined in this file is NOT part of the public API of this
           package. Users CANNOT rely on this file being available, or stored in
           this location. Nor can they rely on the existence of the macro.
@@ -254,7 +303,7 @@
     </joint>
   </ros2_control>
   <!-- Add URDF transmission elements (for ros_control) -->
-  <!-- <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" /> -->
+  <!--<xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />-->
   <!-- Placeholder for ros2_control transmission which don't yet exist -->
   <!-- links -  main serial chain -->
   <link name="base_link"/>
@@ -262,13 +311,13 @@
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/base.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/base.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/base.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/base.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -281,13 +330,13 @@
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/shoulder.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/shoulder.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/shoulder.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/shoulder.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -300,13 +349,13 @@
     <visual>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.138"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/upperarm.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/upperarm.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.138"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/upperarm.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/upperarm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -319,13 +368,13 @@
     <visual>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.007"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/forearm.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/forearm.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.5707963267948966 0 -1.5707963267948966" xyz="0 0 0.007"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/forearm.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/forearm.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -338,13 +387,13 @@
     <visual>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.127"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/wrist1.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/wrist1.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.127"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/wrist1.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/wrist1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -357,13 +406,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 -0.0997"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/wrist2.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/wrist2.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 -0.0997"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/wrist2.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/wrist2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -376,13 +425,13 @@
     <visual>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.0989"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/visual/wrist3.dae"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/visual/wrist3.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 -0.0989"/>
       <geometry>
-        <mesh filename="package://workcell_description/meshes/collision/wrist3.stl"/>
+        <mesh filename="file:///home/ragesh/ur_ws/install/ur_description/share/ur_description/meshes/ur5e/collision/wrist3.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -401,12 +450,11 @@
   <joint name="base_link-base_link_inertia" type="fixed">
     <parent link="base_link"/>
     <child link="base_link_inertia"/>
-    <!--
-			'base_link' is REP-103 aligned (so X+ forward), while the internal
-			frames of the robot/controller have X+ pointing backwards.
-			Use the joint between 'base_link' and 'base_link_inertia' (a dummy
-			link/frame) to introduce the necessary rotation over Z (of pi rad).
-			-->
+    <!-- 'base_link' is REP-103 aligned (so X+ forward), while the internal
+           frames of the robot/controller have X+ pointing backwards.
+           Use the joint between 'base_link' and 'base_link_inertia' (a dummy
+           link/frame) to introduce the necessary rotation over Z (of pi rad).
+      -->
     <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
   </joint>
   <joint name="shoulder_pan_joint" type="revolute">
@@ -466,12 +514,11 @@
   <!-- ROS-Industrial 'base' frame - base_link to UR 'Base' Coordinates transform -->
   <link name="base"/>
   <joint name="base_link-base_fixed_joint" type="fixed">
-    <!--
-			Note the rotation over Z of pi radians - as base_link is REP-103
-			aligned (i.e., has X+ forward, Y+ left and Z+ up), this is needed
-			to correctly align 'base' with the 'Base' coordinate system of
-			the UR controller.
-			-->
+    <!-- Note the rotation over Z of pi radians - as base_link is REP-103
+           aligned (i.e., has X+ forward, Y+ left and Z+ up), this is needed
+           to correctly align 'base' with the 'Base' coordinate system of
+           the UR controller.
+      -->
     <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
     <parent link="base_link"/>
     <child link="base"/>
