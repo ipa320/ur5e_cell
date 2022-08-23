@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /TF1
       Splitter Ratio: 0.5
     Tree Height: 839
   - Class: rviz_common/Selection
@@ -92,6 +93,35 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        robotcell_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotcell_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        shield_front:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shield_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shield_rear:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shield_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         shoulder_link:
           Alpha: 1
           Show Axes: false
@@ -157,6 +187,100 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base:
+          Value: true
+        base_link:
+          Value: true
+        base_link_inertia:
+          Value: true
+        flange:
+          Value: true
+        forearm_link:
+          Value: true
+        ft_frame:
+          Value: true
+        robotcell_base:
+          Value: true
+        robotcell_link:
+          Value: true
+        shield_front:
+          Value: true
+        shield_left:
+          Value: true
+        shield_rear:
+          Value: true
+        shield_right:
+          Value: true
+        shoulder_link:
+          Value: true
+        shunk_egp50_base_link:
+          Value: true
+        shunk_egp50_body_link:
+          Value: true
+        shunk_egp50_pincer_1_link:
+          Value: true
+        shunk_egp50_pincer_2_link:
+          Value: true
+        tool0:
+          Value: true
+        tool_tip:
+          Value: true
+        upper_arm_link:
+          Value: true
+        world:
+          Value: true
+        wrist_1_link:
+          Value: true
+        wrist_2_link:
+          Value: true
+        wrist_3_link:
+          Value: true
+      Marker Scale: 0.5
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          robotcell_link:
+            robotcell_base:
+              base_link:
+                base:
+                  {}
+                base_link_inertia:
+                  shoulder_link:
+                    upper_arm_link:
+                      forearm_link:
+                        wrist_1_link:
+                          wrist_2_link:
+                            wrist_3_link:
+                              flange:
+                                tool0:
+                                  shunk_egp50_base_link:
+                                    shunk_egp50_body_link:
+                                      shunk_egp50_pincer_1_link:
+                                        {}
+                                      shunk_egp50_pincer_2_link:
+                                        {}
+                                    tool_tip:
+                                      {}
+                              ft_frame:
+                                {}
+            shield_front:
+              {}
+            shield_left:
+              {}
+            shield_rear:
+              {}
+            shield_right:
+              {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -203,25 +327,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.279359817504883
+      Distance: 4.966377258300781
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0664338544011116
-        Y: -0.011836620979011059
-        Z: 0.14972355961799622
+        X: 0.14485600590705872
+        Y: -0.6645767092704773
+        Z: 0.4865504503250122
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.42039814591407776
+      Pitch: 0.5653985142707825
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.9553970098495483
+      Yaw: 1.820397138595581
     Saved: ~
 Window Geometry:
   Displays:

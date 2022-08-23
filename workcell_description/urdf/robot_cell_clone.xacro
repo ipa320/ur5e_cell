@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:include filename="inertial_macros.xacro"/>
-    <xacro:property name="robot_base_length" value="0.45" />
-    <xacro:property name="robot_base_width" value="0.52" />
+    <xacro:property name="robot_center_offset_length" value="0.42" />
+    <xacro:property name="robot_center_offset_width" value="0.02" />
     <xacro:property name="robot_base_height" value="0.99" />
     <xacro:property name="robotcell_length" value="1.44" />
     <xacro:property name="robotcell_width" value="0.94" />
@@ -14,11 +14,7 @@
         <color rgba="0.6 0.8 0.8 1" />
     </material>
 
-    <link name="robotcell_link">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-    </link>
-
-    <link name="shield_front">
+    <link name="shield_front_link">
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
@@ -31,7 +27,7 @@
         </xacro:inertial_box>
     </link>
 
-    <link name="shield_rear">
+    <link name="shield_rear_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
@@ -51,7 +47,7 @@
         </xacro:inertial_box>
     </link>
 
-    <link name="shield_left">
+    <link name="shield_right_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
@@ -71,7 +67,7 @@
         </xacro:inertial_box>
     </link>
 
-    <link name="shield_right">
+    <link name="shield_left_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
@@ -91,7 +87,7 @@
         </xacro:inertial_box>
     </link>
 
-    <link name="robotcell_base">
+    <link name="robotcell_base_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 ${robot_base_height/2}" />
             <geometry>
@@ -112,34 +108,28 @@
     </link>
 
 
-    <joint name="robotcell_joint_to_front" type="fixed">
-        <parent link="robotcell_link" />
-        <child link="shield_front" />
+    <joint name="robotcell_base_to_front_joint" type="fixed">
+        <parent link="robotcell_base_link" />
+        <child link="shield_front_link" />
         <origin xyz="0 ${robotcell_width/2-shield_thickness/2} ${robot_base_height+robotcell_height/2}" rpy="0 0 0" />
     </joint>
 
-    <joint name="robotcell_joint_to_rear" type="fixed">
-        <parent link="robotcell_link" />
-        <child link="shield_rear" />
+    <joint name="robotcell_base_to_rear" type="fixed">
+        <parent link="robotcell_base_link" />
+        <child link="shield_rear_link" />
         <origin xyz="0 ${-robotcell_width/2+shield_thickness/2} ${robot_base_height+robotcell_height/2}" rpy="0 0 0" />
     </joint>
 
-    <joint name="robotcell_joint_to_left" type="fixed">
-        <parent link="robotcell_link" />
-        <child link="shield_left" />
+    <joint name="robotcell_base_to_left" type="fixed">
+        <parent link="robotcell_base_link" />
+        <child link="shield_left_link" />
         <origin xyz="${-robotcell_length/2+shield_thickness/2} 0 ${robot_base_height+robotcell_height/2}" rpy="0 0 0" />
     </joint>
 
-    <joint name="robotcell_joint_to_right" type="fixed">
-        <parent link="robotcell_link" />
-        <child link="shield_right" />
+    <joint name="robotcell_jbase_to_right" type="fixed">
+        <parent link="robotcell_base_link" />
+        <child link="shield_right_link" />
         <origin xyz="${robotcell_length/2-shield_thickness/2} 0 ${robot_base_height+robotcell_height/2}" rpy="0 0 0" />
-    </joint>
-
-    <joint name="robotcell_joint_to_robotcell_base" type="fixed">
-        <parent link="robotcell_link" />
-        <child link="robotcell_base" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
 
