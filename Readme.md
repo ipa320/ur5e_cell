@@ -3,11 +3,9 @@ This package provides the workcell description of the ur5e robot, Shunk egp50 gr
 
 **Note** This package has dependencies with `ur_description` and `realsense2_description` which is not yet released for `ros-humble`. 
 ````
-git clone -b ros2 https://github.com/IntelRealSense/realsense-ros.git
+vcs import src --skip-existing --input src/ur5e_workcell_bringup/ur5e_workcell.repos
 ````
-````
-git clone -b ros2 https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git
-````
+
 Build & source your workspace 
 ````
 colcon build --symlink-install
@@ -37,10 +35,10 @@ gz sdf -p workcell.urdf > workcell.world
 ```
 
 
-# Real Robot bringup
+# Real Robot Bringup
 
 ```
-vcs import src --skip-existing --input ur5e_workcell_bringup/ur5e.repos 
+vcs import src --skip-existing --input src/ur5e_workcell_bringup/ur5e_workcell.repos
 ```
 This will pull necessary drivers and moveit_config packages into the workspace
 
@@ -49,6 +47,15 @@ Build & source your workspace
 colcon build --symlink-install
 source install/setup.bash
 ````
+Launch the robot driver
+```
+ros2 launch workcell_description ur5e.launch.py 
+
+```
+Launch the moveit_package
+```
+ros2 launch ur_moveit_config ur_moveit.launch.py 
+```
 ------------------------------------------------------------
 
 ### Tasks 
