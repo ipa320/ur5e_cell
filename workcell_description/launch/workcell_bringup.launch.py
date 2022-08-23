@@ -12,7 +12,7 @@ def generate_launch_description():
     robot_urdf = os.path.join(get_package_share_directory('workcell_description'), 'urdf', 'workcell.urdf.xacro')
     robot_urdf = xacro.process_file(robot_urdf)
     robot_description = robot_urdf.toxml()
-    rviz_config = os.path.join(get_package_share_directory('workcell_description'), 'config', 'config.rviz')
+    rviz_config = os.path.join(get_package_share_directory('workcell_description'), 'rviz', 'config.rviz')
     
     declared_arguments = []
     declared_arguments.append(

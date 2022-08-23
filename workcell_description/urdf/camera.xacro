@@ -16,7 +16,7 @@
     <xacro:arg name="add_plug" default="false" />
     <xacro:arg name="use_mesh" default="true" />
     <xacro:sensor_d435 
-        parent="robotcell_link" 
+        parent="robotcell_base_link" 
         use_nominal_extrinsics="$(arg use_nominal_extrinsics)" 
         add_plug="$(arg add_plug)" 
         use_mesh="$(arg use_mesh)">
