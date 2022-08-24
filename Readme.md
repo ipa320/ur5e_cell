@@ -61,10 +61,10 @@ ros2 launch ur_moveit_config ur_moveit.launch.py
 ### Tasks 
 - [x] Make urdf of the workcell
 - [x] Modify the shunk egp50 urdf file
-- [] Create moveit_config package
+- [x] Create moveit_config package
 - [ ] Add Gazebo plugins to the xacro
 - [x] Create launch files to bringup sim
-- [ ] Create launch files to bringup sim
+- [x] Create launch files to bringup sim
 
 ### Issues
 - [ ] Create the STL of robotcell with the safety glasses installed. This is necessary to define the collision with the glasses. @alb
