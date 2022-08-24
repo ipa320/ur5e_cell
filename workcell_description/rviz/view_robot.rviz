@@ -80,6 +80,15 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         flange:
           Alpha: 1
           Show Axes: false
@@ -93,31 +102,27 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        robotcell_base:
+        robotcell_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robotcell_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        shield_front:
+        shield_front_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        shield_left:
+        shield_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        shield_rear:
+        shield_rear_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        shield_right:
+        shield_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -198,23 +203,25 @@ Visualization Manager:
           Value: true
         base_link_inertia:
           Value: true
+        camera_bottom_screw_frame:
+          Value: true
+        camera_link:
+          Value: true
         flange:
           Value: true
         forearm_link:
           Value: true
         ft_frame:
           Value: true
-        robotcell_base:
+        robotcell_base_link:
           Value: true
-        robotcell_link:
+        shield_front_link:
           Value: true
-        shield_front:
+        shield_left_link:
           Value: true
-        shield_left:
+        shield_rear_link:
           Value: true
-        shield_rear:
-          Value: true
-        shield_right:
+        shield_right_link:
           Value: true
         shoulder_link:
           Value: true
@@ -247,37 +254,39 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
-          robotcell_link:
-            robotcell_base:
-              base_link:
-                base:
-                  {}
-                base_link_inertia:
-                  shoulder_link:
-                    upper_arm_link:
-                      forearm_link:
-                        wrist_1_link:
-                          wrist_2_link:
-                            wrist_3_link:
-                              flange:
-                                tool0:
-                                  shunk_egp50_base_link:
-                                    shunk_egp50_body_link:
-                                      shunk_egp50_pincer_1_link:
-                                        {}
-                                      shunk_egp50_pincer_2_link:
-                                        {}
-                                    tool_tip:
+          robotcell_base_link:
+            base_link:
+              base:
+                {}
+              base_link_inertia:
+                shoulder_link:
+                  upper_arm_link:
+                    forearm_link:
+                      wrist_1_link:
+                        wrist_2_link:
+                          wrist_3_link:
+                            flange:
+                              tool0:
+                                shunk_egp50_base_link:
+                                  shunk_egp50_body_link:
+                                    shunk_egp50_pincer_1_link:
                                       {}
-                              ft_frame:
-                                {}
-            shield_front:
+                                    shunk_egp50_pincer_2_link:
+                                      {}
+                                  tool_tip:
+                                    {}
+                            ft_frame:
+                              {}
+            camera_bottom_screw_frame:
+              camera_link:
+                {}
+            shield_front_link:
               {}
-            shield_left:
+            shield_left_link:
               {}
-            shield_rear:
+            shield_rear_link:
               {}
-            shield_right:
+            shield_right_link:
               {}
       Update Interval: 0
       Value: true
@@ -327,25 +336,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.966377258300781
+      Distance: 4.686433792114258
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.14485600590705872
-        Y: -0.6645767092704773
-        Z: 0.4865504503250122
+        X: 0.11842590570449829
+        Y: -1.0177899599075317
+        Z: 0.7219599485397339
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5653985142707825
+      Pitch: 0.9253982305526733
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.820397138595581
+      Yaw: 1.9853968620300293
     Saved: ~
 Window Geometry:
   Displays:
