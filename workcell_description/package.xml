@@ -13,6 +13,8 @@
   <depend>rclpy</depend>
   <depend>ur_description</depend>
   <depend>realsense2_description</depend>
+  <depend>ur_moveit_config</depend>
+  <depend>ur_robot_driver</depend>
   <exec_depend>ros2launch</exec_depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
