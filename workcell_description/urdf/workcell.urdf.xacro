@@ -19,9 +19,9 @@
     <xacro:arg name="safety_k_position" default="20" />
     <xacro:arg name="headless_mode" default="false" />
     <xacro:arg name="robot_ip" default="0.0.0.0" />
-    <xacro:arg name="script_filename" default="" />
-    <xacro:arg name="output_recipe_filename" default="" />
-    <xacro:arg name="input_recipe_filename" default="" />
+    <xacro:arg name="script_filename" default="ros_control.urscript"/>
+    <xacro:arg name="output_recipe_filename" default="rtde_output_recipe.txt"/>
+    <xacro:arg name="input_recipe_filename" default="rtde_input_recipe.txt"/>
     <xacro:arg name="use_tool_communication" default="false" />
     <xacro:arg name="tool_voltage" default="24" />
     <xacro:arg name="tool_parity" default="0" />
