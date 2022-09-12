@@ -3,5 +3,5 @@ from moveit_configs_utils.launches import generate_warehouse_db_launch
 
 
 def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("ur5e_workcell", package_name="workcell_msa_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("ur5e_cell", package_name="ur5e_cell_msa_config").to_moveit_configs()
     return generate_warehouse_db_launch(moveit_config)

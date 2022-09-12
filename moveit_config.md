@@ -7,12 +7,12 @@ Using the robot description package now it is possible to create the MoveIt conf
 ros2 run xacro xacro -o workcell.urdf workcell.urdf.xacro 
 ``` 
 - **Step 2**: Use the docker to create the `ur5e_workcell_moveit_config`
-- **Step 3**: create a `workcell_description` package in the docker workspace
+- **Step 3**: create a `ur5e_cell_description` package in the docker workspace
 ```
 cd /root/ros1_ws/src
-catkin_create_pkg workcell_description urdf xacro  
+catkin_create_pkg ur5e_cell_description urdf xacro  
 ```
-Now create a `urdf` and `meshes` directory inside the `workcell_description`
+Now create a `urdf` and `meshes` directory inside the `ur5e_cell_description`
 ```
 mkdir urdf
 mkdir meshes
