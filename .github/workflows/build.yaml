@@ -12,7 +12,7 @@ jobs:
     env:
       DOCKER_IMAGE: moveit/moveit2:${{ matrix.env.IMAGE }}
       UPSTREAM_WORKSPACE: dependencies_rolling.repos
-      AFTER_SETUP_UPSTREAM_WORKSPACE: vcs pull $BASEDIR/temp_ws/src
+      AFTER_SETUP_UPSTREAM_WORKSPACE: vcs pull $BASEDIR/upstream_ws/src
       TARGET_CMAKE_ARGS: -DCMAKE_BUILD_TYPE='Release'
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       BASEDIR: ${{ github.workspace }}/.work
@@ -23,13 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: cache temp_ws
+      - name: cache upstream_ws
         uses: pat-s/always-upload-cache@v2.1.3
         with:
-          path: ${{ env.BASEDIR }}/temp_ws
-          key: temp_ws-${{ env.CACHE_PREFIX }}-${{ hashFiles('dependencies_rolling.repos') }}-${{ github.run_id }}
+          path: ${{ env.BASEDIR }}/upstream_ws
+          key: upstream_ws-${{ env.CACHE_PREFIX }}-${{ hashFiles('dependencies_rolling.repos') }}-${{ github.run_id }}
           restore-keys: |
-            temp_ws-${{ env.CACHE_PREFIX }}-${{ hashFiles('dependencies_rolling.repos') }}
+            upstream_ws-${{ env.CACHE_PREFIX }}-${{ hashFiles('dependencies_rolling.repos') }}
       # The target directory cache doesn't include the source directory because
       # that comes from the checkout.  See "prepare target_ws for cache" task below
       - name: cache target_ws
