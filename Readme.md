@@ -1,5 +1,5 @@
 # Robot workcell description package
-This package provides the workcell description of the ur5e robot, Shunk egp50 gripper, intel realsense D435 camera and the custom workcell. 
+This package provides the workcell description of the ur5e robot, Shunk egp50 gripper, and the robot cell from ipa_326. 
 
 **Note** This package has dependencies with `ur_description` and `realsense2_description` which is not yet released for `ros-humble`. 
 ````
