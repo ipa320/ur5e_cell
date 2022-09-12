@@ -10,7 +10,6 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(ur_description)
-find_package(realsense2_description)
 
 # add this line to include launch and urdf directory
 install(DIRECTORY 

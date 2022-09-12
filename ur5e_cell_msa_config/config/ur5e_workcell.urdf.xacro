@@ -3,7 +3,7 @@
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
 
     <!-- Import ur5e_workcell urdf file -->
-    <xacro:include filename="$(find workcell_description)/urdf/workcell.urdf.xacro" />
+    <xacro:include filename="$(find ur5e_cell_description)/urdf/workcell.urdf.xacro" />
 
     <!-- Import control_xacro -->
     <xacro:include filename="ur5e_workcell.ros2_control.xacro" />
