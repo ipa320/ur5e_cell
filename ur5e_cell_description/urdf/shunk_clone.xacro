@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="shunk_clone">
+    <!-- This is GRIPPY, A gripper with exact measurements of Shunk EGP50 and with simlilar links and joints
+            This gripper is made with geometric shapes and can be extended as per your imagination.  -->
+    <xacro:macro name="shunk_clone">
+
+        <xacro:include filename="inertial_macros.xacro"/>
+
+        <xacro:property name="base_diameter" value="0.075" />
+        <xacro:property name="base_length" value="0.015" />
+        <xacro:property name="body_length" value="0.05" />
+        <xacro:property name="body_width" value="0.03" />
+        <xacro:property name="body_height" value="0.1044" />
+        <xacro:property name="pincer_height" value="0.014" />
+        <xacro:property name="pincer_length" value="0.008" />
+        <xacro:property name="pincer_width" value="0.018" />
+
+
+        <material name="blue">
+            <color rgba="0 0.2 1 1" />
+        </material>
+    
+        <material name="green">
+            <color rgba="0 0.9 0.3 1" />
+        </material>
+    
+        <material name="white">
+            <color rgba="1 1 1 1" />
+        </material>
+
+
+        <!--Base plate-->
+        <link name="shunk_clone_base_link">
+            <visual>
+                <geometry>
+                    <cylinder length="${base_length}" radius="${base_diameter/2}" />
+                </geometry>
+                <material name="blue" />
+                <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="${base_length}" radius="${base_diameter/2}" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
+            </collision>
+            <xacro:inertial_cylinder mass="0.2" length="${base_length}" radius="${base_diameter/2}">
+                <origin rpy="0 0 0" xyz="0 0 ${base_length/2}" />
+            </xacro:inertial_cylinder>
+        </link>
+
+        <!--Main gripper-->
+        <link name="shunk_clone_body_link">
+            <visual>
+                <geometry>
+                    <box size="${body_length} ${body_width} ${body_height}" />
+                </geometry>
+                <material name="green" />
+                <origin rpy="0 0 0 " xyz="0 0 ${body_height/2}" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${body_length} ${body_width} ${body_height}" />
+                </geometry>
+                <origin rpy="0 0 0 " xyz="0 0 ${body_height/2}" />
+            </collision>
+            <xacro:inertial_box mass="0.51" x="${body_length}" y="${body_width}" z="${body_height}">
+                <origin rpy="0 0 0 " xyz="0 0 ${body_height/2}" />
+            </xacro:inertial_box>
+        </link>
+
+
+        <!--Pincer block 1-->
+        <link name="shunk_clone_left_pincer_link">
+            <visual>
+                <geometry>
+                    <box size="${pincer_length} ${pincer_width} ${pincer_height}" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <material name="white" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${pincer_length} ${pincer_width} ${pincer_height}" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+            </collision>
+            <xacro:inertial_box mass="0.1" x="${pincer_length}" y="${pincer_width}" z="${pincer_height}">
+                <origin rpy="0 0 0" xyz="0 0 0" />
+            </xacro:inertial_box>
+        </link>
+
+        <!--Pincer block 2-->
+        <link name="shunk_clone_right_pincer_link">
+            <visual>
+                <geometry>
+                    <box size="${pincer_length} ${pincer_width} ${pincer_height}" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <material name="white" />
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${pincer_length} ${pincer_width} ${pincer_height}" />
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+            </collision>
+            <xacro:inertial_box mass="0.1" x="${pincer_length}" y="${pincer_width}" z="${pincer_height}">
+                <origin rpy="0 0 0" xyz="0 0 0" />
+            </xacro:inertial_box>
+        </link>
+
+        <!-- Virtual link for visualizytion and planning-->
+        <link name="tool_tip" />
+
+
+        <!-- Joints-->
+
+        <joint name="shunk_clone_body_joint" type="fixed">
+            <parent link="shunk_clone_base_link" />
+            <child link="shunk_clone_body_link" />
+            <origin xyz="0.0 0.0 ${base_length}" rpy="0.0 0.0 0.0" />
+        </joint>
+
+        <joint name="shunk_clone_pincer_left_joint" type="prismatic">
+            <parent link="shunk_clone_body_link" />
+            <child link="shunk_clone_left_pincer_link" />
+            <origin xyz="${-body_length/2+pincer_length/2} 0 ${body_height+pincer_height/2}" rpy="0 0 0" />
+            <!-- the motion of the pincer is along the X axis -->
+            <axis xyz="1 0 0" />
+            <!-- the motion of the pincer is limited to the half of the gripper body length -->
+            <limit lower="0" upper="${body_length/4}" velocity="100" effort="100" />
+        </joint>
+
+        <joint name="shunk_clone_pincer_right_joint" type="prismatic">
+            <parent link="shunk_clone_body_link" />
+            <child link="shunk_clone_right_pincer_link" />
+            <origin xyz="${body_length/2-pincer_length/2} 0 ${body_height+pincer_height/2}" rpy="0.0 0.0 0.0" />
+            <!-- the motion of the pincer is along the X axis -->
+            <axis xyz="-1 0 0" />
+            <!-- the motion of the pincer is limited to the half of the gripper body length -->
+            <limit lower="0" upper="${body_length/4}" velocity="100" effort="100" />
+        </joint>
+
+        <joint name="shunk_clone_tip_joint" type="fixed">
+            <parent link="shunk_clone_body_link" />
+            <child link="tool_tip" />
+            <origin xyz="0.0 0.0 ${body_height}" rpy="0.0 0.0 0.0" />
+        </joint>
+
+
+    </xacro:macro>
+</robot>

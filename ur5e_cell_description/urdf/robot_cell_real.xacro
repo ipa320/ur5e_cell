@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:property name="robot_center_offset_length" value="0.42" />
+    <xacro:property name="robot_center_offset_width" value="0.02" />
+    <xacro:property name="robot_base_height" value="0.99" />
+    <xacro:property name="robotcell_length" value="1.44" />
+    <xacro:property name="robotcell_width" value="0.94" />
+    <xacro:property name="robotcell_height" value="1.16" />
+    <xacro:property name="shield_thickness" value="0.03" />
+
+    <link name="robotcell_base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://ur5e_cell_description/meshes/Robotcell.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://ur5e_cell_description/meshes/Robotcell_with_safety.STL" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+</robot>
