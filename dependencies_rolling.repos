@@ -1,13 +1,13 @@
 repositories:
   Universal_Robots_ROS2_Description:
     type: git
-    url: git@github.com:UniversalRobots/Universal_Robots_ROS2_Description.git
+    url: https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git
     version: ros2
 
   Universal_Robots_ROS2_Driver:
     type: git
-    url: git@github.com:ipa-rar/Universal_Robots_ROS2_Driver.git
-    version: deploy
+    url: https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
+    version: 83d02950ada227948f29b74661c7f940e3988642
 
   ros2_controllers:
     type: git
