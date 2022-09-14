@@ -3,7 +3,7 @@
     <!-- loading robot  from ur5e_cell_description package-->
     <xacro:include filename="$(find ur5e_cell_description)/urdf/shunk_egp50.xacro" />
     <!-- <xacro:include filename="$(find ur5e_cell_description)/urdf/robot_cell_real.xacro" /> -->
-    <xacro:include filename="$(find ur5e_cell_description)/urdf/robot_cell_clone.xacro" />
+    <xacro:include filename="$(find ur5e_cell_description)/urdf/robot_cell.xacro" />
     <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
 
     <xacro:arg name="name" default="ur5e" />
