@@ -10,7 +10,7 @@
         <xacro:property name="body_length" value="0.05" />
         <xacro:property name="body_width" value="0.03" />
         <xacro:property name="body_height" value="0.0866" />
-        <xacro:property name="body_height_max" value="0.01044" />
+        <xacro:property name="body_height_max" value="0.1044" />
         <xacro:property name="pincer_height" value="0.014" />
         <xacro:property name="pincer_length" value="0.050" />
         <xacro:property name="pincer_width" value="0.018" />
