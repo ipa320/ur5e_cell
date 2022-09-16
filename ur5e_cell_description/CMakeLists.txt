@@ -15,6 +15,7 @@ find_package(ur_description)
 install(DIRECTORY 
   launch 
   urdf 
+  config
   meshes
   rviz
   DESTINATION share/${PROJECT_NAME}/)

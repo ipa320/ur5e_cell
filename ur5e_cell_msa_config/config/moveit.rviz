@@ -1,10 +1,14 @@
 Panels:
   - Class: rviz_common/Displays
-    Help Height: 70
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Planning Request1
+        - /MotionPlanning1/Planned Path1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 223
   - Class: rviz_common/Help
@@ -13,6 +17,11 @@ Panels:
     Expanded:
       - /Current View1
     Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz_common/Tool Properties
+    Expanded:
+      - /Measure1
+    Name: Tool Properties
     Splitter Ratio: 0.5
 Visualization Manager:
   Class: ""
@@ -75,15 +84,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
           base_link_inertia:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          camera_bottom_screw_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -242,15 +242,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          camera_bottom_screw_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          camera_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           flange:
             Alpha: 1
             Show Axes: false
@@ -351,6 +342,97 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base:
+          Value: false
+        base_link:
+          Value: true
+        base_link_inertia:
+          Value: false
+        flange:
+          Value: false
+        forearm_link:
+          Value: false
+        ft_frame:
+          Value: false
+        robotcell_base_link:
+          Value: false
+        shield_front_link:
+          Value: false
+        shield_left_link:
+          Value: false
+        shield_rear_link:
+          Value: false
+        shield_right_link:
+          Value: false
+        shoulder_link:
+          Value: false
+        shunk_egp50_base_link:
+          Value: false
+        shunk_egp50_body_link:
+          Value: false
+        shunk_egp50_pincer_1_link:
+          Value: false
+        shunk_egp50_pincer_2_link:
+          Value: false
+        tool0:
+          Value: false
+        tool_tip:
+          Value: false
+        upper_arm_link:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        world:
+          robotcell_base_link:
+            base_link:
+              base:
+                {}
+              base_link_inertia:
+                shoulder_link:
+                  upper_arm_link:
+                    forearm_link:
+                      wrist_1_link:
+                        wrist_2_link:
+                          wrist_3_link:
+                            flange:
+                              tool0:
+                                shunk_egp50_base_link:
+                                  shunk_egp50_body_link:
+                                    shunk_egp50_pincer_1_link:
+                                      {}
+                                    shunk_egp50_pincer_2_link:
+                                      {}
+                                  tool_tip:
+                                    {}
+                            ft_frame:
+                              {}
+            shield_front_link:
+              {}
+            shield_left_link:
+              {}
+            shield_rear_link:
+              {}
+            shield_right_link:
+              {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -362,6 +444,8 @@ Visualization Manager:
       Hide Inactive Objects: true
     - Class: rviz_default_plugins/MoveCamera
     - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
   Transformation:
     Current:
       Class: rviz_default_plugins/TF
@@ -369,30 +453,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.7795510292053223
+      Distance: 1.685478925704956
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.15513603389263153
-        Y: -0.2013988494873047
-        Z: 1.070765495300293
+        X: 0.020403321832418442
+        Y: -0.1499992311000824
+        Z: 1.0622341632843018
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5299999117851257
+      Pitch: 1.4799994230270386
       Target Frame: world
       Value: Orbit (rviz_default_plugins)
-      Yaw: 1.5669986009597778
+      Yaw: 4.75200891494751
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1163
+  Height: 1136
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -401,9 +485,11 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002b400000431fc0200000005fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d00000162000000c900fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001a5000001e70000017d00fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a005600690065007700730100000392000000dc000000a400ffffff000004c60000043100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002b400000416fc0200000006fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d0000011c000000c900fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000015f000001870000017d00fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a0056006900650077007301000002ec000000b1000000a400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007301000003a3000000b00000005c00ffffff0000047c0000041600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Tool Properties:
+    collapsed: false
   Views:
     collapsed: false
-  Width: 1920
-  X: 1920
-  Y: 0
+  Width: 1846
+  X: 74
+  Y: 27
