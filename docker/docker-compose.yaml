@@ -5,6 +5,7 @@ services:
         build:
             context: ../
             dockerfile: docker/Dockerfile
+        network_mode: "host"
         environment: 
             - DISPLAY
         volumes: 
