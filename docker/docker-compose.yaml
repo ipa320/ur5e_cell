@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+    ur_robot:
+        build:
+            context: ../
+            dockerfile: docker/Dockerfile
+        environment: 
+            - DISPLAY
+        volumes: 
+            - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        command: ros2 launch ur5_cell_moveit_config robot.launch.py
