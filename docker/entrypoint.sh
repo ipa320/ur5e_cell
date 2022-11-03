@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source /opt/ros/humble/setup.bash
-source $ros_ws/install/setup.bash
+source /opt/ros/humble/setup.sh
+source ~/ur_ws/install/setup.sh
 
 exec "$@"
