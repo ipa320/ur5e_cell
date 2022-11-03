@@ -5,8 +5,7 @@ from launch.conditions import UnlessCondition, IfCondition
 
 
 def generate_launch_description():
-    moveit_config = MoveItConfigsBuilder("ur5_msa", package_name="ur5_cell_moveit_config").to_moveit_configs()
-    #print(moveit_config.to_dict())
+    moveit_config = MoveItConfigsBuilder("ur5e_workcell", package_name="ur5_cell_moveit_config").to_moveit_configs()
     ld = generate_demo_launch(moveit_config)
     ur_control_node = Node(
         package="ur_robot_driver",
