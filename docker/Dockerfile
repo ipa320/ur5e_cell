@@ -12,7 +12,6 @@ RUN git clone https://github.com/ipa-rar/ur5e_cell.git
 
 WORKDIR $ros2_ws
 RUN vcs import src --skip-existing --input src/ur5e_cell/dependencies_rolling.repos \
-    && source /opt/ros/humble/setup.bash \
     && rosdep update \
     && rosdep install --from-paths src --ignore-src -r -y \
     && echo "Dependecies are installed in the workspace"
