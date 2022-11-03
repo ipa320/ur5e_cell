@@ -1,11 +1,14 @@
-version: '2'
+version: '2.3'
 
 services:
     ur_robot:
         build:
             context: ../
             dockerfile: docker/Dockerfile
-        environment: 
+        network_mode: "host"
+        ipc: host
+        environment:
+            - ROS_DOMAIN_ID=2
             - DISPLAY
         volumes: 
             - /tmp/.X11-unix:/tmp/.X11-unix:rw
