@@ -10,11 +10,16 @@ from launch.conditions import UnlessCondition, IfCondition
 from moveit_configs_utils.launch_utils import DeclareBooleanLaunchArg
 from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
+import os
+
 
 def generate_launch_description():
 
-    moveit_config = MoveItConfigsBuilder("ur5_msa", package_name="ur5_cell_moveit_config").to_moveit_configs()
-    #pprint.pprint(moveit_config.to_dict())
+    moveit_config = MoveItConfigsBuilder(
+        "ur5_msa", package_name="ur5_cell_moveit_config").to_moveit_configs()
+    # pprint.pprint(moveit_config.to_dict())
+    ROBOT_IP = os.environ['ROBOT_IP']
+
     ld = LaunchDescription()
     ld.add_action(
         DeclareBooleanLaunchArg(
@@ -32,15 +37,14 @@ def generate_launch_description():
     )
     ld.add_action(
         DeclareBooleanLaunchArg(
-            "use_rviz", 
+            "use_rviz",
             default_value=True)
-        )
-    
+    )
 
     virtual_joints_launch = (
         moveit_config.package_path / "launch/static_virtual_joint_tfs.launch.py"
     )
-    
+
     if virtual_joints_launch.exists():
         ld.add_action(
             IncludeLaunchDescription(
@@ -87,12 +91,12 @@ def generate_launch_description():
             package="ur_robot_driver",
             executable="ur_ros2_control_node",
             parameters=[
-                moveit_config.robot_description, 
+                moveit_config.robot_description,
                 str(moveit_config.package_path / "config/ros2_controllers.yaml")],
             output="screen"
         )
-    )    
-    
+    )
+
     ld.add_action(
         Node(
             package="ur_robot_driver",
@@ -101,10 +105,10 @@ def generate_launch_description():
             name="dashboard_client",
             output="screen",
             emulate_tty=True,
-            parameters=[{"robot_ip": "192.168.56.2"}],
+            parameters=[{"robot_ip": ROBOT_IP}],
         )
     )
-    
+
     ld.add_action(
         Node(
             package="ur_robot_driver",
@@ -131,9 +135,10 @@ def generate_launch_description():
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                str(moveit_config.package_path / "launch/spawn_controllers.launch.py")
+                str(moveit_config.package_path /
+                    "launch/spawn_controllers.launch.py")
             ),
         )
     )
-    
+
     return ld
