@@ -3,8 +3,8 @@ version: '2.3'
 services:
     ur_robot:
         build:
-            context: ../
-            dockerfile: docker/Dockerfile
+            context: .
+            dockerfile: Dockerfile
         network_mode: "host"
         ipc: host
         environment:

@@ -1,4 +1,4 @@
-name: Build and Test with Industrial CI
+name: Build and Test
 
 on: push
 
