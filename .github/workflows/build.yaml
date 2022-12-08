@@ -1,4 +1,4 @@
-name: Build check with ROS-Industrial CI
+name: Build with ROS-Industrial CI
 
 on: push
 
