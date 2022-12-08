@@ -2,9 +2,15 @@ version: '2.3'
 
 services:
     ur_robot:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: ragesh18/ur5e_cell:main
+        container_name: ur5e_cell
+        platform: linux/amd64
+        restart: always
+        pull_policy: always
+        # Uncomment this for development
+        # build:
+        #     context: .
+        #     dockerfile: Dockerfile
         network_mode: "host"
         ipc: host
         environment:
