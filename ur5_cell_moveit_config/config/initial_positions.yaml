@@ -1,9 +1,9 @@
 # Default initial positions for ur5_msa's ros2_control fake system
 
 initial_positions:
-  elbow_joint: 0
-  shoulder_lift_joint: 0
-  shoulder_pan_joint: 0
-  wrist_1_joint: 0
-  wrist_2_joint: 0
+  elbow_joint: -1.5794
+  shoulder_lift_joint: -1.74
+  shoulder_pan_joint: -1.5708
+  wrist_1_joint: 0.1736
+  wrist_2_joint: 1.5621
   wrist_3_joint: 0

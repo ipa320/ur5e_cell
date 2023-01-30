@@ -40,9 +40,10 @@
   <exec_depend>rviz2</exec_depend>
   <exec_depend>rviz_common</exec_depend>
   <exec_depend>rviz_default_plugins</exec_depend>
-  <exec_depend>tf2_ros</exec_depend>
   <exec_depend>ur_description</exec_depend>
   <exec_depend>xacro</exec_depend>
+  <exec_depend>ur5e_cell_description</exec_depend>
+  <exec_depend version_eq="2.2.6">ur_robot_driver</exec_depend>
 
 
   <export>
