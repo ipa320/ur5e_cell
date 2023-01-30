@@ -25,6 +25,22 @@
         <joint name="shunk_egp50_body_joint"/>
         <chain base_link="shunk_egp50_base_link" tip_link="tool_tip"/>
     </group>
+    <group_state name="home" group="arm">
+        <joint name="elbow_joint" value="-1.5794" />
+        <joint name="shoulder_lift_joint" value="-1.74" />
+        <joint name="shoulder_pan_joint" value="-1.5708" />
+        <joint name="wrist_1_joint" value="0.1736" />
+        <joint name="wrist_2_joint" value="1.5621" />
+        <joint name="wrist_3_joint" value="0" />
+    </group_state>
+    <group_state name="detect" group="arm">
+        <joint name="elbow_joint" value="-1.5708" />
+        <joint name="shoulder_lift_joint" value="-1.5708" />
+        <joint name="shoulder_pan_joint" value="-1.5708" />
+        <joint name="wrist_1_joint" value="-1.5708" />
+        <joint name="wrist_2_joint" value="1.5708" />
+        <joint name="wrist_3_joint" value="0" />
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="hand" parent_link="tool0" group="hand" parent_group="arm"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
