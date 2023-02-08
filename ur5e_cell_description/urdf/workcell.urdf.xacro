@@ -44,7 +44,6 @@
     <!-- Set arg initial_positions_file as property -->
     <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)" />
 
-
     <!-- Args related to realsense -->
     <xacro:arg name="use_nominal_extrinsics" default="false"/>
     <xacro:arg name="add_plug" default="false" />
